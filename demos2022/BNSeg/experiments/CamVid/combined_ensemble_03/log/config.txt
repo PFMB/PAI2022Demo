@@ -1,0 +1,16 @@
+data_dir: ./BNSeg/data/ 
+data_name: CamVid 
+batch_size: 4 
+is_train: False 
+num_work: 4 
+gpu: 0 
+device: cpu 
+num_gpu: 1 
+uncertainty: combined 
+n_samples: 15 
+work_path: /home/qimaqi/TA/bak/pai-demos/demos2022 
+drop_rate: 0.2 
+in_channels: 3 
+n_classes: 12 
+exp_dir: ./BNSeg/experiments/ 
+exp_load: ensemble_03 

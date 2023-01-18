@@ -1,0 +1,102 @@
+is_train: 1 
+tensorboard: 1 
+cpu: False 
+gpu: 0 
+num_gpu: 1 
+num_work: 6 
+exp_dir: ../BNN_seg_exp 
+exp_load: 1104_1926 
+data_dir: ../data 
+data_name: CamVid 
+batch_size: 2 
+rgb_range: 1 
+uncertainty: combined 
+in_channels: 3 
+n_classes: 12 
+n_feats: 32 
+var_weight: 1.0 
+drop_rate: 0.5 
+epochs: 100 
+lr: 0.001 
+decay: 20-40-60-80-90 
+gamma: 0.8 
+optimizer: adam 
+weight_decay: 0.0001 
+momentum: 0.9 
+betas: (0.9, 0.999) 
+epsilon: 1e-08 
+n_samples: 25 
+test_interval: 20 
+device: cuda:0 
+Model(
+  (model): COMBINED(
+    (encoders): ModuleList(
+      (0): _Encoder(
+        (features): Sequential(
+          (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m1,792[0m params
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (2): ReLU(), [92m0[0m params
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m36,928[0m params
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (5): ReLU(), [92m0[0m params
+        ), [92m38,976[0m params
+      ), [92m38,976[0m params
+      (1): _Encoder(
+        (features): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m73,856[0m params
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m256[0m params
+          (2): ReLU(), [92m0[0m params
+          (3): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m147,584[0m params
+          (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m256[0m params
+          (5): ReLU(), [92m0[0m params
+        ), [92m221,952[0m params
+      ), [92m221,952[0m params
+    ), [92m260,928[0m params
+    (decoders_mean): ModuleList(
+      (0): _Decoder(
+        (features): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m147,584[0m params
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m256[0m params
+          (2): ReLU(), [92m0[0m params
+          (3): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m73,792[0m params
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (5): ReLU(), [92m0[0m params
+        ), [92m221,760[0m params
+      ), [92m221,760[0m params
+      (1): _Decoder(
+        (features): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m36,928[0m params
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (2): ReLU(), [92m0[0m params
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m36,928[0m params
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (5): ReLU(), [92m0[0m params
+        ), [92m74,112[0m params
+      ), [92m74,112[0m params
+    ), [92m295,872[0m params
+    (decoders_var): ModuleList(
+      (0): _Decoder(
+        (features): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m147,584[0m params
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m256[0m params
+          (2): ReLU(), [92m0[0m params
+          (3): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m73,792[0m params
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (5): ReLU(), [92m0[0m params
+        ), [92m221,760[0m params
+      ), [92m221,760[0m params
+      (1): _Decoder(
+        (features): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m36,928[0m params
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (2): ReLU(), [92m0[0m params
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m36,928[0m params
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), [92m128[0m params
+          (5): ReLU(), [92m0[0m params
+        ), [92m74,112[0m params
+      ), [92m74,112[0m params
+    ), [92m295,872[0m params
+    (classifier_mean): Conv2d(64, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m6,924[0m params
+    (classifier_var): Conv2d(64, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), [92m6,924[0m params
+  ), [92m866,520[0m params
+), [92m866,520[0m params

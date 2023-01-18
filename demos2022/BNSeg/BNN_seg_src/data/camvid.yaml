@@ -1,0 +1,13 @@
+dataset:
+  data_dir: './BNSeg/data/'
+  data_name: 'CamVid'
+  cpu: True
+  gpu: 0
+
+
+model:
+  uncertainty: normal
+  in_channels: 3
+  n_classes: 12
+  drop_rate: 0.2
+  n_samples : 25
